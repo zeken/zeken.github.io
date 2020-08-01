@@ -118,6 +118,7 @@ $(document).ready(function () {
     ros = new ROSLIB.Ros({
       url: urlInput
     });
+    let popupt = document.getElementById("urlPopuptext");
 
     // successful connection
     ros.on('connection', function () {
@@ -126,6 +127,12 @@ $(document).ready(function () {
       connectButton.classList.remove("btn-danger");
       connectButton.classList.remove("btn-warning");
       connectButton.classList.add("btn-success");
+      popupt.classList.toggle("show");
+      $("#urlPopuptext").text("Success!");
+      setTimeout(() => {
+        popupt.classList.toggle("hidden");
+        $("#urlPopuptext").text("");
+      }, 2000);
     });
     // connection error
     ros.on('error', function (error) {
@@ -134,6 +141,12 @@ $(document).ready(function () {
       connectButton.classList.remove("btn-success");
       connectButton.classList.remove("btn-danger");
       connectButton.classList.add("btn-warning");
+      popupt.classList.toggle("show");
+      $("#urlPopuptext").text("Error!");
+      setTimeout(() => {
+        popupt.classList.toggle("show");
+        $("#urlPopuptext").text("");
+      }, 2000);
     });
     // close connection
     ros.on('close', function () {
@@ -218,7 +231,7 @@ $(document).ready(function () {
       return this.zInternal;
     },
   }
-  
+
   fast.addEventListener('click', () => {
     speed.x = 1.5;
     speed.z = 1.0;
