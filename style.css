@@ -1,0 +1,86 @@
+    body {
+      font-size: 25px;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    label {
+      font-size: 16px;
+    }
+
+    select {
+      font-size: 20px;
+    }
+
+    h4 {
+      font-size: 20px;
+      text-align: left;
+    }
+
+    label {
+      margin: 0px;
+    }
+
+    p {
+      margin: 0px;
+    }
+
+    .connection, .topic {
+      width: 100%;
+      height: auto;
+      min-height: 50px;
+      border-radius: 10px;
+      border: 0.5px solid gray;
+      padding: 20px;
+    }
+
+    .topic {
+      border: 0.5px solid darkblue;
+    }
+
+    .btn1 {
+      padding: 4px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: transparent;
+    }
+
+    .speed-button {
+      padding: 2px 4px;
+    }
+
+    .select-speed {
+      font-size: 15px;
+    }
+
+    #del-all-locations {
+      font-size: 9px;
+      border-width: 0px;
+    }
+
+    #location-name {
+      width: 100px;
+    }
+
+    #manual-control-container {
+      background-color: whitesmoke;
+      border-radius: 50%;
+      border: 0.5px solid black;
+      width: 130px;
+      height: 130px;
+      min-width: 80px;
+      transform: scale(2);
+      margin-top: 100px !important;
+      margin-bottom: 100px !important;
+      overflow: hidden;
+    }
+
+    #click-show-map {
+      font-size: 20px;
+      color: red;
+    }
+
+    #sequence {
+      list-style-type: decimal-leading-zero;
+      font-size: small;
+    }
+    

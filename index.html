@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ROS controller admin</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script type="text/javascript" src="http://static.robotwebtools.org/EaselJS/current/easeljs.min.js"></script>
+  <script type="text/javascript" src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+  <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+  <script type="text/javascript" src="http://static.robotwebtools.org/ros2djs/current/ros2d.min.js"></script>
+  <script type="text/javascript" src="http://static.robotwebtools.org/nav2djs/current/nav2d.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <link href="style.css" rel="stylesheet">
+
+  <script type="text/javascript" src="script.js"></script>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="container">
+    <div class="row my-5 text-center">
+      <h1 class="mx-auto"> Robot Controller Admin Page </h1>
+    </div>
+    <div class="row">
+      <div class="container col-7">
+        <div class="row">
+          <!-- <div class=" mx-auto col-6">
+              <p>to zoom: ctrl + mouse</p>
+              <p>to pan: shift + mouse</p>
+            </div> -->
+          <div class="col-12 text-center">
+            <p id="click-show-map">click "Connect to server"</p>
+          </div>
+        </div>
+        <div class="row my-auto">
+          <div id="initial-map-to-delete" class="mx-auto my-auto"></div>
+          <div id="map" class="mx-auto my-auto"></div>
+        </div>
+        <div class="container">
+          <div class="row mx-5">
+            <div class="col-8">
+              <div id="manual-board-right" class="col-xm-12 col-lg-6 text-center pb-3 mx-0">
+                <div class="row ">
+                  <div class="wrapper my-5 mx-auto" id="manual-control-container">
+                    <div class="row d-flex justify-content-center align-items-end">
+                      <button class="btn1">
+                        <i class="material-icons md-manual white manual-control" id="forward">arrow_upward</i>
+                      </button>
+                    </div>
+                    <!-- sm mean bigger than small screen size so -md- means if bigger than this size the content is around -->
+                    <div class="row d-flex flex-nowrap justify-content-center align-items-center">
+                      <button class="btn1">
+                        <i class="material-icons md-manual white manual-control" id="left-turn">
+                          arrow_back
+                        </i>
+                      </button>
+                      <button class="btn1">
+                        <i class="material-icons md-manual white manual-control" id="stop">stop</i>
+                      </button>
+                      <button class="btn1">
+                        <i class="material-icons md-manual white manual-control" id="right-turn">arrow_forward</i>
+                      </button>
+                    </div>
+                    <div class="row d-flex justify-content-center align-items-top">
+                      <button class="btn1">
+                        <i class="material-icons md-manual white manual-control" id="backward">arrow_downward</i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 my-auto">
+              <div class=" my-auto">
+                <span class="select-speed">Quick Select Speed</span>
+                <button id="speed-1" class="btn btn-primary my-auto speed-button">fast</button>
+                <button id="speed-2" class="btn btn-primary btn-success my-auto speed-button">med</button>
+                <button id="speed-3" class="btn btn-primary my-auto speed-button">slow</button>
+                <div class="row">
+                  <div class="col-12">
+                    <label for="set-linear-speed" class="">linear speed:</label>
+                    <input type="number" class="form-control" id="set-linear-speed" value="1.0" placeholder="">
+                  </div>
+                  <div class="col-12">
+                    <label for="set-angular-speed" class="">angular speed:</label>
+                    <input type="number" class="form-control" id="set-angular-speed" value="0.5" placeholder="">
+                  </div>
+                </div>
+                <button id="set-speed" class="btn btn-success">set speed</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-5">
+        <!-- connection -->
+        <div class="connection row">
+          <div class="col-6 mb-3">
+            <input type="text" class="form-control" id="connect-url" value="ws://172.17.37.197:9090" placeholder="Enter ROS server url">
+            <!-- add ip addr -->
+          </div>
+          <div class="col-6 text-center div-butt mb-3">
+            <button id="connect-butt" class="btn btn-primary my-auto"> Connect to server </button>
+          </div>
+          <div class="col-12">
+            <button id="map-butt" class="btn btn-danger my-auto mx-auto">show map</button>
+            <button id="init-pose" class="btn btn-primary mx-3">set initial pose</button>
+          </div>
+          <div>
+            <span style="font-size:small; color:blue;" class="my-auto">test1 to see /rosout in console.</span>
+            <span style="font-size:small; color:crimson;" class="my-auto"> test2 to disable</span>
+          </div>
+          <div>
+            <button id="test1-butt" class="btn btn-primary mx-3">test1</button>
+            <button id="test2-butt" class="btn btn-danger mx-3">test2</button>
+          </div>
+        </div>
+        <!-- save location -->
+        <div class="connection row">
+          <div class="col-8">
+            <label for="location-name">Enter location name:</label>
+            <input type="text" class="form-control" id="location-name" value="sfdghf" placeholder="">
+            <h4 id="save-del-result" class="my-3">Waiting for location</h4>
+          </div>
+          <div class="col-4 my-auto">
+            <button id="add-location" class="btn btn-primary">Save location</button>
+            <button id="del-location" class="btn btn-danger">Delete location</button>
+            <button id="del-all-locations" class="btn btn-warning my-0">Delete all locations</button>
+          </div>
+        </div>
+        <div class="connection row">
+          <div class="col-8">
+            <label class="mx-auto" for="">retrieve locations</label>
+            <select class="col-12" id="all-locations"></select>
+            <select class="col-12" id="all-tasks"></select>
+            <h4 id="all-locations-result">press "get locations"</h4>
+          </div>
+          <div class="col-4">
+            <button id="get-location" class="btn btn-success">get locations</button>
+            <button id="go" class="btn btn-primary my-auto">go to</button>
+          </div>
+          <!-- </div>
+          <div class="connection row"> -->
+          <div class="col-12 mx-auto">
+            <button id="add-sequence" class="btn btn-primary">add sequence</button>
+            <button id="get-tasks" class="btn btn-primary">get tasks</button>
+            <button id="arr-sequence" class="btn btn-danger">arrange seq</button>
+          </div>
+
+          <div class="col-12 mt-3">
+            <h4 id="sequence-result"></h4>
+            <ol id="sequence">
+            </ol>
+          </div>
+
+        </div>
+        <div id="load-or-save" class="connection row">
+          <button id="load-map-activate" class="btn btn-primary">Load Map</button>
+          <button id="save-map-activate" class="btn btn-success">Save Map</button>
+        </div>
+        <div id="save-map-div" class="connection row">
+          <div class="col-8">
+            <label for="map-name">Enter map name:</label>
+            <input type="text" class="form-control" id="map-name" value="">
+            <label for="path-save">Enter path to save to:</label>
+            <input type="text" class="form-control" id="path-save">
+          </div>
+          <div class="col-4">
+            <button id="save-map" class="btn btn-success">Save map</button>
+          </div>
+        </div>
+        <div id="load-map-div" class="connection row">
+          <select id="map-list" class="col-8">
+            <option></option>
+          </select>
+          <div class="col-4">
+            <button id="load-map" class="btn btn-primary">load map</button>
+          </div>
+        </div>
+        <div class="connection row">
+          <div class="col-8">
+            <label for="">Folder name:</label>
+            <input type="text" class="form-control" id="launch-folder-name" value="" placeholder="launch folder name">
+            <label for="">File name:</label>
+            <input type="text" class="form-control" id="launch-file-name" value="" placeholder="launch file name">
+          </div>
+          <div class="col-4 my-auto">
+            <button id="launch-file" class="btn btn-primary">launch file</button>
+          </div> 
+        </div>
+        <!-- calling service -->
+        <!-- <div class="connection row">
+          <div class="col-6">
+            <label for="">Service name:</label>
+            <input type="text" class="form-control" id="serv-name" value="my_service" placeholder="">
+            <label for="">Service type: </label>
+            <select id="serv-type">
+              <option>rospy_tutorials/AddTwoInts</option>
+              <option>web_service_jeremy_v1/NamePose</option>
+              <option>web_service_jeremy_v1/Strings</option>
+              <option>test_msgs/SaveMap</option>
+            </select>
+          </div>
+          <div class="col-6 text-center div-butt mt-4">
+            <button id="serv-butt" class="btn btn-primary my-auto"> call Service </button>
+          </div>
+          <div class="col-6 text-center my-3">
+            <h4 id="serv-result">Waiting for service server to start</h4>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>
