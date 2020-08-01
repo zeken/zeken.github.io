@@ -21,16 +21,14 @@ cd catkin_ws/src
 git clone https://github.com/NP-Robotics/waypoint-web-system
 ```
 
-## Setup (on robot)
-
-### Start rosbridge
+## Step 1: Start rosbridge (on robot)
 
 ```
 roslaunch rosbridge_server rosbridge_websocket.launch
 ```
 
-### On remote computer (design is not suited for phone)
-Go to browser and type in:
+## Step 2: Open browser on remote computer (design is not suited for phone)
+
 ```
 abudory.website
 ```
