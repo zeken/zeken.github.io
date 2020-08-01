@@ -39,13 +39,17 @@ Open terminal and type in:
 ```
 ifconfig
 ```
-copy the inet addr usually ```192.168.something.something```
-paste into _url input_ (beside "connect to server" button) it should look something like this:
+#### copy the inet addr usually ```192.168.something.something```
+
+#### paste into _url input_ (beside "connect to server" button) it should look something like this:
 ```
 ws://192.168.something.something:9090
 ```
-If the button turns green, congrats! You can start using the webpage. 
-If the button turns red, there was some error. You can check the error by opening the console
+```diff
+- red
+```
+#### If the button turns green, congrats! You can start using the webpage. 
+#### If the button turns red, there was some error. You can check the error by opening the console
 
 ## Other notes
 The load map, save map and launch file sections are not usable as I have not uploaded the services needed for them to function.
