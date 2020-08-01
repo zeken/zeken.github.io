@@ -45,11 +45,9 @@ ifconfig
 ```
 ws://192.168.something.something:9090
 ```
-```diff
-- red
-```
-#### If the button turns green, congrats! You can start using the webpage. 
-#### If the button turns red, there was some error. You can check the error by opening the console
+
+#### If the button turns ```diff +green```, congrats! You can start using the webpage. 
+#### If the button turns ```diff -red```, there was some error. You can check the error by opening the console
 
 ## Other notes
 The load map, save map and launch file sections are not usable as I have not uploaded the services needed for them to function.
