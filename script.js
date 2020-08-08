@@ -127,12 +127,14 @@ $(document).ready(function () {
       connectButton.classList.remove("btn-danger");
       connectButton.classList.remove("btn-warning");
       connectButton.classList.add("btn-success");
-      popupt.classList.toggle("show");
-      $("#urlPopuptext").text("Success!");
+      // popupt.style.visibility = "visible";
+      $("#urlPopuptext").show();
+      $("#urlPopuptext").text("success");
+      // popupt.classList.toggle("show");
+      // $("#urlPopuptext").text("Success!");
       setTimeout(() => {
-        popupt.classList.toggle("hidden");
-        $("#urlPopuptext").text("");
-      }, 2000);
+        $("#urlPopuptext").hide();
+      }, 1000);
     });
     // connection error
     ros.on('error', function (error) {
