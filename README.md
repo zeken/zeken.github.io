@@ -14,7 +14,7 @@ A single webpage to control a ROS Robot locally. This will only work if the devi
 - ~~Save/Load map~~
 - ~~Launch files (roslaunch)~~
 
-## Prerequisites **IMPORTANT**
+## Prerequisites **[IMPORTANT!!]**
 - Must have https://github.com/NP-Robotics/waypoint-web-system installed on ROS computer (robot)
 ```
 cd catkin_ws/src
