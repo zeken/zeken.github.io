@@ -27,11 +27,12 @@ Open terminal and type in:
 roslaunch rosbridge_server rosbridge_websocket.launch
 ```
 
-## Step 2: Open browser on other computer (on same network)
+## Step 2: Open browser on same ~~other~~ computer ~~(on same network)~~
 
-```
-abudory.website
-```
+Please download the file onto your computer and then open the html file. There is an issue with https and ws. So as of now, you can only use the webpage (zeken.github.io) to view the page. It cannot be used to connect to your robot by using the online page. 
+
+#### If you want to connect via another computer (other than robot), you can use python simple http server to make it available on the same network. 
+
 BAM webpage
 
 ## Step 3: Connecting to rosbridge server
