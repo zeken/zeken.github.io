@@ -29,7 +29,7 @@ roslaunch rosbridge_server rosbridge_websocket.launch
 
 ## Step 2: Open browser on same ~~other~~ computer ~~(on same network)~~
 
-Please download the file onto your computer and then open the html file. There is an issue with https and ws. So as of now, you can only use the webpage (zeken.github.io) to view the page. It cannot be used to connect to your robot by using the online page. 
+Please download the file onto your computer and then open the html file. There is an issue with the website as rosbridge connects over websocket and github connects over https. The connection cannot be established as websocket is less secure than https. So as of now, you can only use the webpage (zeken.github.io) to view the page. It cannot be used to connect to your robot by using the online page. 
 
 #### If you want to connect via another computer (other than robot), you can use python simple http server to make it available on the same network. 
 
